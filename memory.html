@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory</title>
+    <style>
+    body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background:linear-gradient(
+        -225deg,
+        #000000 0%,
+        #000000 29%,
+        #00fbff 67%,
+        #00fbff 100% 
+    )
+    
+    
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #00fbff;
+    color: white;
+  }
+
+body
+{
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    text-align: center;
+}
+
+h1{
+    color: #2336ac;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+.topnav {
+    overflow: hidden;
+    background:linear-gradient(
+        -225deg,
+        #000000 0%,
+        #000000 29%,
+        #00fbff 67%,
+        #00fbff 100% 
+    )
+    
+    
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #00fbff;
+    color: white;
+  }
+  body
+  {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      text-align: center;
+  }
+.wrapper {
+  box-sizing: content-box;
+  width: 26.87em;
+  padding: 2.5em 3em;
+  background-color: #ffffff;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  border-radius: 0.6em;
+  box-shadow: 0 0.9em 2.8em rgba(86, 66, 0, 0.2);
+}
+.game-container {
+  position: relative;
+  width: 100%;
+  display: grid;
+  gap: 0.6em;
+}
+.stats-container {
+  text-align: right;
+  margin-bottom: 1.2em;
+}
+.stats-container span {
+  font-weight: 600;
+}
+.card-container {
+  position: relative;
+  width: 6.25em;
+  height: 6.25em;
+  cursor: pointer;
+}
+.card-before,
+.card-after {
+  position: absolute;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #000000;
+  transition: transform 0.7s ease-out;
+  backface-visibility: hidden;
+}
+.card-before {
+  background-color: #00fbff;
+  font-size: 2.8em;
+  font-weight: 600;
+}
+.card-after {
+
+  background-color: #ffffff;
+  transform: rotateY(180deg);
+  
+}
+.card-after img{
+  height: 100px;
+
+}
+.card-container.flipped .card-before {
+  transform: rotateY(180deg);
+}
+.card-container.flipped .card-after {
+  transform: rotateY(0deg);
+}
+.controls-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+  background-color: #00fbff;
+  top: 200;
+}
+button {
+  border: none;
+  border-radius: 0.3em;
+  padding: 1em 1.5em;
+  cursor: pointer;
+}
+#stop {
+  font-size: 1.1em;
+  display: block;
+  margin: 1.1em auto 0 auto;
+  background-color: #000000;
+  color: #ffffff;
+}
+.controls-container button {
+  font-size: 1.3em;
+  box-shadow: 0 0.6em 2em rgba(86, 66, 0, 0.2);
+}
+.hide {
+  display: none;
+}
+#result {
+  text-align: center;
+}
+#result h2 {
+  font-size: 2.5em;
+}
+#result h4 {
+  font-size: 1.8em;
+  margin: 0.6em 0 1em 0;
+}
+
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <a href="#">Home</a>
+        <a href="blackjack.html">Blackjack</a>
+        <a class="active" href="memory.html">memory</a>
+        <a href="higher-lower.html">higher-lower</a>
+        <a href="#about">About</a>
+      </div>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h3 class="animate-charcter"> memory</h3>
+          </div>
+        </div>
+      </div>
+    
+      <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"/>
+  <body>
+    <div class="wrapper">
+      <div class="stats-container">
+        <div id="moves-count"></div>
+        <div id="time"></div>
+      </div>
+      <div class="game-container"></div>
+      <button id="stop" class="hide">Stop Game</button>
+    </div>
+    <div class="controls-container">
+      <p id="result"></p>
+      <button id="start">Start Game</button>
+    </div>
+
+    <script>const moves = document.getElementById("moves-count");
+      const timeValue = document.getElementById("time");
+      const startButton = document.getElementById("start");
+      const stopButton = document.getElementById("stop");
+      const gameContainer = document.querySelector(".game-container");
+      const result = document.getElementById("result");
+      const controls = document.querySelector(".controls-container");
+      let cards;
+      let interval;
+      let firstCard = false;
+      let secondCard = false;
+
+      const items = [
+        { name: "king of spades", image: "images/kingofspades.png" },
+        { name: "king of clover", image: "images/kingofclover.png" },
+        { name: "king of hearts", image: "images/kingofhearts.png" },
+        { name: "king of diamonds", image: "images/kingofdiamonds.png" },
+        { name: "ace of spades", image: "images/aceofspades.png" },
+        { name: "ace of clover", image: "images/aceofclover.png" },
+        { name: "ace of hearts", image: "images/aceofhearts.png" },
+        { name: "ace of diamonds", image: "images/aceofdiamonds.png" },
+        { name: "queen of spades", image: "images/queenofspades.png" },
+        { name: "queen of clover", image: "images/queenofclover.png" },
+        { name: "quee of hearts", image: "images/queenofhearts.png" },
+        { name: "queen of diamonds", image: "images/queenofhearts.png" },
+        { name: "jack of spades", image: "images/jackofspades.png" },
+        { name: "jack of clover", image: "images/jackofclubs.png" },
+        { name: "jack of hearts", image: "images/jackofhearts.png" },
+        { name: "jack of diamonds", image: "images/jackofdiamonds.png" },
+      ];
+      
+
+      let seconds = 0,
+        minutes = 0;
+
+      let movesCount = 0,
+        winCount = 0;
+
+      const timeGenerator = () => {
+        seconds += 1;
+
+        if (seconds >= 60) {
+          minutes += 1;
+          seconds = 0;
+        }
+ 
+        let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
+        let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
+        timeValue.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
+      };
+      
+
+      const movesCounter = () => {
+        movesCount += 1;
+        moves.innerHTML = `<span>Moves:</span>${movesCount}`;
+      };
+      
+
+      const generateRandom = (size = 4) => {
+
+        let tempArray = [...items];
+
+        let cardValues = [];
+  
+        size = (size * size) / 2;
+
+        for (let i = 0; i < size; i++) {
+          const randomIndex = Math.floor(Math.random() * tempArray.length);
+          cardValues.push(tempArray[randomIndex]);
+      
+          tempArray.splice(randomIndex, 1);
+        }
+        return cardValues;
+      };
+      
+      const matrixGenerator = (cardValues, size = 4) => {
+        gameContainer.innerHTML = "";
+        cardValues = [...cardValues, ...cardValues];
+
+        cardValues.sort(() => Math.random() - 0.5);
+        for (let i = 0; i < size * size; i++) {
+
+          gameContainer.innerHTML += `
+           <div class="card-container" data-card-value="${cardValues[i].name}">
+              <div class="card-before">?</div>
+              <div class="card-after">
+              <img src="${cardValues[i].image}" class="image"/></div>
+           </div>
+           `;
+        }
+ 
+        gameContainer.style.gridTemplateColumns = `repeat(${size},auto)`;
+
+        cards = document.querySelectorAll(".card-container");
+        cards.forEach((card) => {
+          card.addEventListener("click", () => {
+  
+            if (!card.classList.contains("matched")) {
+
+              card.classList.add("flipped");
+
+              if (!firstCard) {
+ 
+                firstCard = card;
+                firstCardValue = card.getAttribute("data-card-value");
+              } else {
+        
+                movesCounter();
+    
+                secondCard = card;
+                let secondCardValue = card.getAttribute("data-card-value");
+                if (firstCardValue == secondCardValue) {
+  
+                  firstCard.classList.add("matched");
+                  secondCard.classList.add("matched");
+
+                  firstCard = false;
+
+                  winCount += 1;
+
+                  if (winCount == Math.floor(cardValues.length / 2)) {
+                    result.innerHTML = `<h2>You Won</h2>
+                  <h4>Moves: ${movesCount}</h4>`;
+                    stopGame();
+                  }
+                } else {
+                  let [tempFirst, tempSecond] = [firstCard, secondCard];
+                  firstCard = false;
+                  secondCard = false;
+                  let delay = setTimeout(() => {
+                    tempFirst.classList.remove("flipped");
+                    tempSecond.classList.remove("flipped");
+                  }, 900);
+                }
+              }
+            }
+          });
+        });
+      };
+      
+
+      startButton.addEventListener("click", () => {
+        movesCount = 0;
+        seconds = 0;
+        minutes = 0;
+
+        controls.classList.add("hide");
+        stopButton.classList.remove("hide");
+        startButton.classList.add("hide");
+
+        interval = setInterval(timeGenerator, 1000);
+
+        moves.innerHTML = `<span>Moves:</span> ${movesCount}`;
+        initializer();
+      });
+      
+      stopButton.addEventListener(
+        "click",
+        (stopGame = () => {
+          controls.classList.remove("hide");
+          stopButton.classList.add("hide");
+          startButton.classList.remove("hide");
+          clearInterval(interval);
+        })
+      );
+      const initializer = () => {
+        result.innerText = "";
+        winCount = 0;
+        let cardValues = generateRandom();
+        console.log(cardValues);
+        matrixGenerator(cardValues);
+      };</script>
+  </body>
+</html>
+
+</body>
+</html>
